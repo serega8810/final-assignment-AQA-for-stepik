@@ -17,3 +17,4 @@ class ProductPageLocators():
     NAME_PRODUCT = (By.CLASS_NAME, 'col-sm-6.product_main h1')
     ADDED_COST_MESSAGE = (By.CLASS_NAME, "alertinner p strong")
     COST_PRODUCT = (By.CSS_SELECTOR, 'p.price_color')
+    SUCCESS_MESSAGE = (By.CLASS_NAME, "alert.alert-safe.alert-noicon.alert-success")
