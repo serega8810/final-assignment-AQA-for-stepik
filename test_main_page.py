@@ -1,11 +1,10 @@
-import time
-
 import pytest
 
 from pages.main_page import MainPage
 from pages.login_page import LoginPage
 from pages.product_page import ProductPage
 from pages.product_page import BasePage
+from pages.basket_page import BasketPage
 
 
 def test_guest_can_go_to_login_page(browser):
@@ -88,3 +87,20 @@ def test_message_disappeared_after_adding_product_to_basket(browser):
     page.add_product_to_basket()
     page.success_message_should_disappear()  # элемент присутствует на странице и должен исчезнуть
 
+
+def test_guest_cant_see_product_in_basket_opened_from_main_page(browser):
+    link = "http://selenium1py.pythonanywhere.com/en-gb/"
+    page = ProductPage(browser, link)
+    page.open()
+    page.guest_clik_button_see_basket()
+    page_basket = BasketPage(browser, link)
+    page_basket.checks_the_text_that_the_cart_is_empty()
+
+
+def test_guest_cant_see_product_in_basket_opened_from_product_page(browser):
+    link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"
+    page = ProductPage(browser, link)
+    page.open()
+    page.guest_clik_button_see_basket()
+    page_basket = BasketPage(browser, link)
+    page_basket.checks_that_cart_is_empty()
